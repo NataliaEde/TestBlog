@@ -1,5 +1,7 @@
 # Classification Problem of Bank's Telemarketing Campaign
 
+by Natalia Edelson 
+
 ![image](https://user-images.githubusercontent.com/44559346/206246271-d6dbdc19-82bc-4bb2-a14b-ce7c7f4eb45b.png)
 
 
