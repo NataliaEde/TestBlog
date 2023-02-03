@@ -1,70 +1,38 @@
-<p>Data Science</p>
-<!--Main Navigation-->
 
-<header>
-<!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark primary-color">
-  <div class="container">
-    <!-- Navbar brand -->
-    <a class="navbar-brand" rel="noopener" target="_blank" href="#">Navbar</a>
-    <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="basicExampleNav">
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" rel="noopener" target="_blank" href="#">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" rel="noopener" target="_blank" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" rel="noopener" target="_blank" href="#">Pricing</a>
-        </li>
-        <!-- Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" rel="noopener" target="_blank" href="#">Action</a>
-            <a class="dropdown-item" rel="noopener" target="_blank" href="#">Another action</a>
-            <a class="dropdown-item" rel="noopener" target="_blank" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-      <!-- Links -->
-      <form class="form-inline">
-        <div class="md-form my-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        </div>
-      </form>
-    </div>
-    <!-- Collapsible content -->
-  </div>
-</nav>
-<!--/.Navbar-->
-</header>
 
-<!--Main Navigation-->
+---
+layout: page
+---
 
-<!--Main layout-->
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+    </a>
+    {{ post.excerpt }}
+    <p class="post-meta">Posted by {% if site.author %}{{ site.author }}{% else %}{{ site.github_username }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
+</div>
+<hr>
+{% endfor %}
 
-<main>
-
-</main>
-
-<!--Main layout-->
-
-<!--Footer-->
-
-<footer>
-
-</footer>
-
-<!--Footer-->
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
